@@ -1,0 +1,17 @@
+# Render Blueprint: خدمة ويب واحدة (مجانية) تخدم الموقع والـ API والـ WebSocket
+services:
+  - type: web
+    name: the-realm-voice
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: API_KEY            # تنضاف من لوحة Render (سرية، ما تنحط بالكود)
+        sync: false
+      - key: PUBLIC_BASE_URL    # مثال: https://the-realm-voice.onrender.com
+        sync: false
